@@ -59,8 +59,7 @@ const displayNewsDetails = (allNews) => {
     totalNewsContainer.appendChild(totalNewsDiv);
 
     allNews.forEach(news => {
-
-        console.log(news)
+        // console.log(news)
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
                 <div class="card lg:card-side bg-base-100 shadow-xl">
@@ -70,16 +69,16 @@ const displayNewsDetails = (allNews) => {
             <p>${news.details.slice(0, 300)}...</p>
             <div class="card-actions pt-4 justify-between">
            <div class="flex">
-           <img class="w-10 h-10 rounded-full" src="${news.author.img}">
+           <img class="w-10 h-10 rounded-full" src="${news.author.img ? news.author.img : "No data found"}">
            <div class="pl-2">
-           <p>${news.author ? news.author.name : "No data found"}</p>
-           <p>${news.author ? news.author.published_date : "No data found"}</p>
+           <p>${news.author.name ? news.author.name : "No data found"}</p>
+           <p>${news.author.published_date ? news.author.published_date : "No data found"}</p>
            </div>
            </div>
            <div>
-           <p>Views: ${news.total_view}</p>
+           <p>Views: ${news.total_view ? news.total_view : "No data Found"}</p>
            </div>
-            <button class="btn btn-primary">Details</button>
+           <label onclick="newsDetailsId('${news._id} ')" for="my-modal" class="btn modal-button">Details</label>
             </div>
         </div>
         </div>
@@ -88,7 +87,38 @@ const displayNewsDetails = (allNews) => {
     });
 }
 
+// news details modal 
+const newsDetailsId = id => {
+    console.log(id)
+    const url = `https://openapi.programming-hero.com/api/news/${id}`
 
+    fetch(url)
+        .then(res => res.json())
+        .then(data => newsDetailsModal(data.data[0]))
+}
+
+const newsDetailsModal = newsDetails => {
+    console.log(newsDetails)
+    const newsDetailBody = document.getElementById('news-detail-body');
+    newsDetailBody.textContent = '';
+    const newsModalDiv = document.createElement('div');
+    newsModalDiv.innerHTML = `
+        <img class="mb-2" src="${newsDetails.image_url}" alt="Album">
+        <h3 class="font-bold text-lg">Author: ${newsDetails.author.name ? newsDetails.author.name : "No data found"}</h3>
+        <p class="py-4">Publish Date: ${newsDetails.author.published_date ? newsDetails.author.published_date : "No data found"}</p>
+        <p class="py-4">Title: ${newsDetails.title ? newsDetails.title : "No data found"}</p>
+        <p class="py-4">Details: ${newsDetails.details}</p>
+        <p class="py-4">Rating: Number - ${newsDetails.rating.number} & Badge - ${newsDetails.rating.badge}</p>
+    
+    `;
+    newsDetailBody.appendChild(newsModalDiv);
+
+}
+
+
+
+
+// defult news section 
 const defultNews = () => {
     const url = `https://openapi.programming-hero.com/api/news/category/08`;
     // console.log(url)
@@ -100,7 +130,7 @@ const defultNews = () => {
 defultNews();
 
 const defultNewsDisplay = (totalNews) => {
-    console.log(totalNews)
+    // console.log(totalNews)
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
 
@@ -109,8 +139,7 @@ const defultNewsDisplay = (totalNews) => {
     }
 
     totalNews.forEach(news => {
-
-        console.log(news)
+        // console.log(news)
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
@@ -122,14 +151,14 @@ const defultNewsDisplay = (totalNews) => {
        <div class="flex">
        <img class="w-10 h-10 rounded-full" src="${news.author.img}">
        <div class="pl-2">
-       <p>${news.author ? news.author.name : "No data found"}</p>
-       <p>${news.author ? news.author.published_date : "No data found"}</p>
+       <p>${news.author.name ? news.author.name : "No data found"}</p>
+       <p>${news.author.published_date ? news.author.published_date : "No data found"}</p>
        </div>
        </div>
        <div>
-       <p>Views: ${news.total_view}</p>
+       <p>Views: ${news.total_view ? news.total_view : "No Data Found"}</p>
        </div>
-        <button class="btn btn-primary">Details</button>
+       <label onclick="newsDetailsId('${news._id} ')" for="my-modal" class="btn modal-button">Details</label>
         </div>
     </div>
     </div>
