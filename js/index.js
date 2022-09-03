@@ -79,21 +79,23 @@ const displayNewsDetails = (allNews) => {
         // console.log(news)
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
-                <div class="card lg:card-side bg-base-100 shadow-xl">
+                <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
         <figure><img class="w-full h-40" src="${news.image_url}" alt="Album"></figure>
         <div class="card-body">
             <h2 class="card-title">${news.title}</h2>
             <p>${news.details.slice(0, 300)}...</p>
             <div class="card-actions pt-4 justify-between">
            <div class="flex">
+           <div class="pt-2">
            <img class="w-10 h-10 rounded-full" src="${news.author.img ? news.author.img : "No data found"}">
+           </div>
            <div class="pl-2">
            <p>${news.author.name ? news.author.name : "No data found"}</p>
            <p>${news.author.published_date ? news.author.published_date : "No data found"}</p>
            </div>
            </div>
            <div>
-           <p>Views: ${news.total_view ? news.total_view : "No data Found"}</p>
+           <p class="pt-4"><i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : "No data Found"}</p>
            </div>
            <label onclick="newsDetailsId('${news._id} ')" for="my-modal" class="btn modal-button">Details</label>
             </div>
@@ -176,20 +178,22 @@ const defultNewsDisplay = (totalNews) => {
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
-    <figure><img class="w-full h-40" src="${news.image_url}" alt="Album"></figure>
-    <div class="card-body">
+        <figure><img class="w-full h-40" src="${news.image_url}" alt="Album"></figure>
+        <div class="card-body">
         <h2 class="card-title">${news.title}</h2>
         <p>${news.details.slice(0, 300)}...</p>
         <div class="card-actions pt-4 justify-between">
-       <div class="flex">
-       <img class="w-10 h-10 rounded-full" src="${news.author.img}">
+        <div class="flex">
+        <div class="pt-2">
+           <img class="w-10 h-10 rounded-full" src="${news.author.img ? news.author.img : "No data found"}">
+           </div>
        <div class="pl-2">
        <p>${news.author.name ? news.author.name : "No data found"}</p>
        <p>${news.author.published_date ? news.author.published_date : "No data found"}</p>
        </div>
        </div>
        <div>
-       <p>Views: ${news.total_view ? news.total_view : "No Data Found"}</p>
+       <p class="pt-4"><i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : "No Data Found"}</p>
        </div>
        <label onclick="newsDetailsId('${news._id} ')" for="my-modal" class="btn modal-button">Details</label>
         </div>
