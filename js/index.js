@@ -38,10 +38,15 @@ const categoriesMenu = async () => {
 const categoryId = id => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
     // console.log(url)
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayNewsDetails(data.data))
+    try {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayNewsDetails(data.data))
 
+    }
+    catch (error) {
+        console.log(error)
+    }
     toggleSpinner(true);
 }
 
@@ -105,9 +110,14 @@ const newsDetailsId = id => {
     console.log(id)
     const url = `https://openapi.programming-hero.com/api/news/${id}`
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => newsDetailsModal(data.data[0]))
+    try {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => newsDetailsModal(data.data[0]))
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 const newsDetailsModal = newsDetails => {
