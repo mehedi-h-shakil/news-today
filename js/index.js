@@ -27,7 +27,7 @@ const categoriesMenu = async () => {
         // console.log(categoryId)
         const div = document.createElement('div')
         div.innerHTML = `
-            <h1 class="cursor-pointer" onclick="categoryId(${category.category_id})">${categoryName}</h1>
+            <a class="cursor-pointer" onclick="categoryId(${category.category_id})">${categoryName}</a>
         `;
         categoryDiv.appendChild(div);
 

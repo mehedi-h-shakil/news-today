@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Galary</title>
+
+    <!-- daisyui and tailwind css  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="border-b-2 border-slate-500">
+            <div class="navbar bg-base-100 p-5">
+                <div class="flex-1">
+                    <a class="btn btn-ghost normal-case text-xl">News Galary</a>
+                </div>
+                <div class="flex-none">
+                    <ul class="menu menu-horizontal p-0">
+                        <li><a href="index.html">News</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="w-9/12 mx-auto mt-4 pb-10">
+            <h1 class="text-purple-400">Q1. What are the deferences between var, let and const?</h1>
+            <p class="pt-3">The scope of a var variable is a functional scope and the scope of a let, const variable is
+                a block scope.
+                Var can be updated and re-decleared into the scope. let and const can be updated but can not be
+                re-decleared into the scope.
+                var can be decleared without initialization but let and const can not be decleared without
+                initialization.
+            </p>
+            <h1 class="text-purple-400 mt-4">Q2. Deferences between Arrow function and Normal function.</h1>
+            <p class="pt-3">Arrow function allows a develper to get the same result like normal function but in a few
+                lines of code
+                and approximately half the typing. Unlike normal function arrow function do not have their own
+                <strong>this</strong>.
+                The value of <strong>this</strong> inside an arrow function remains the same throughout their lifecycle
+                of the function. Arrow function can never have duplicate name parameters.
+            </p>
+            <h1 class="text-purple-400 mt-4">Q3. What are differences of map(), filter(), foreach() and find()?</h1>
+            <p class="pt-3"><strong>.forEach()</strong> is used to execute the same code on every element in an array
+                but does not
+                change the array and it returns undefined. <br>
+                <strong> .map()</strong> executes the same code on every element in an array and returns a new array
+                with the updated elements. <br>
+                <strong>.filter()</strong> checks every element in an array to see if it meets a certain criteria and
+                returns a new array with the elements that return truthy for the criteria. <br>
+                <strong>.find()</strong> method returns the first element in the provided array that satisfies the
+                provided testing
+                function. If no values satisfy the testing function, undefined is returned.
+            </p>
+            <h1 class="text-purple-400 mt-4">Q4. Why would i use template string?</h1>
+            <p class="pt-3">Template literals are sometimes informally called template strings. Template literals use
+                back-ticks(``) rather than the quotes("") to define a string. With template literals, i can use both
+                single and double quotes inside a string. Template literals provide an easy way to interpolate variables
+                and expressions into strings.</p>
+        </section>
+    </main>
+</body>
+
+</html>
