@@ -1,7 +1,6 @@
 const loadCategoriesData = async () => {
     try {
         const url = `https://openapi.programming-hero.com/api/news/categories`;
-        // const url1 = `https://openapi.programming-hero.com/api/news/category/${id}`;
         const res = await fetch(url);
         const data = await res.json();
         return data;
@@ -27,7 +26,7 @@ const categoriesMenu = async () => {
         // console.log(categoryId)
         const div = document.createElement('div')
         div.innerHTML = `
-            <a class="cursor-pointer" onclick="categoryId(${category.category_id})">${categoryName}</a>
+            <a class="cursor-pointer" onclick="categoryId('${category.category_id}')">${categoryName}</a>
         `;
         categoryDiv.appendChild(div);
 
@@ -36,7 +35,7 @@ const categoriesMenu = async () => {
 }
 
 const categoryId = id => {
-    const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
+    const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     // console.log(url)
     try {
         fetch(url)
@@ -101,7 +100,7 @@ const displayNewsDetails = (allNews) => {
            <div>
            <p class="pt-4"><i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : "No data Found"}</p>
            </div>
-           <label onclick="newsDetailsId('${news._id} ')" for="my-modal" class="btn modal-button">Details</label>
+           <label onclick="newsDetailsId('${news._id}')" for="my-modal" class="btn modal-button">Details</label>
             </div>
         </div>
         </div>
