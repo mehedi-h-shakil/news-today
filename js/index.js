@@ -83,7 +83,7 @@ const displayNewsDetails = (allNews) => {
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
                 <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
-        <figure><img class="w-full h-40" src="${news.image_url}" alt="Album"></figure>
+        <figure><img class="w-64 h-64" src="${news.image_url}" alt="Album"></figure>
         <div class="card-body">
             <h2 class="card-title">${news.title}</h2>
             <p>${news.details.slice(0, 300)}...</p>
@@ -190,7 +190,7 @@ const defultNewsDisplay = (totalNews) => {
         // console.log(newsView)
         newsDiv.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
-        <figure><img class="w-full h-40" src="${news.image_url}" alt="Album"></figure>
+        <figure><img class="w-64 h-64" src="${news.image_url}" alt="Album"></figure>
         <div class="card-body">
         <h2 class="card-title">${news.title}</h2>
         <p>${news.details.slice(0, 300)}...</p>
