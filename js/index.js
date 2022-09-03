@@ -146,10 +146,20 @@ const defultNewsDisplay = (totalNews) => {
     // console.log(totalNews)
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
-
     if (totalNews.length > 10) {
         totalNews = totalNews.slice(0, 10)
     }
+    const allNews = totalNews.length;
+    const totalNewsContainer = document.getElementById('total-news');
+
+    totalNewsContainer.textContent = '';
+    const totalNewsDiv = document.createElement('div')
+    totalNewsDiv.innerHTML = `
+        <h2>${allNews} items found for this category </h2>
+    `;
+    totalNewsContainer.appendChild(totalNewsDiv);
+
+
 
     totalNews.forEach(news => {
         // console.log(news)
