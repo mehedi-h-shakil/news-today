@@ -75,6 +75,10 @@ const displayNewsDetails = (allNews) => {
     `;
     totalNewsContainer.appendChild(totalNewsDiv);
 
+    allNews.sort((a, b) => {
+        return b.total_view - a.total_view;
+    })
+
     allNews.forEach(news => {
         // console.log(news)
         const newsDiv = document.createElement('div');
@@ -170,12 +174,21 @@ const defultNewsDisplay = (totalNews) => {
         <h2>${allNews} items found for this category </h2>
     `;
     totalNewsContainer.appendChild(totalNewsDiv);
+    const arr = [];
 
-
-
+    totalNews.sort((a, b) => {
+        return b.total_view - a.total_view;
+    })
     totalNews.forEach(news => {
         // console.log(news)
+
         const newsDiv = document.createElement('div');
+        const newsView = news.total_view;
+        arr.push(newsView);
+        // console.log(arr)
+
+        console.log(arr)
+        // console.log(newsView)
         newsDiv.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
         <figure><img class="w-full h-40" src="${news.image_url}" alt="Album"></figure>
