@@ -10,7 +10,6 @@ const loadCategoriesData = async () => {
     }
 }
 
-
 // category menu section
 const categoriesMenu = async () => {
 
@@ -34,6 +33,7 @@ const categoriesMenu = async () => {
 
 }
 
+// category news section 
 const categoryId = id => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     // console.log(url)
@@ -56,7 +56,7 @@ const displayNewsDetails = (allNews) => {
 
     // news count for category 
     const totalNews = allNews.length;
-    console.log(totalNews)
+    // console.log(totalNews)
     const totalNewsContainer = document.getElementById('total-news');
     const noDataFound = document.getElementById('no-data-found');
     if (totalNews === 0) {
@@ -112,7 +112,7 @@ const displayNewsDetails = (allNews) => {
 
 // news details modal 
 const newsDetailsId = id => {
-    console.log(id)
+    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/news/${id}`
 
     try {
@@ -126,7 +126,7 @@ const newsDetailsId = id => {
 }
 
 const newsDetailsModal = newsDetails => {
-    console.log(newsDetails)
+    // console.log(newsDetails)
     const newsDetailBody = document.getElementById('news-detail-body');
     newsDetailBody.textContent = '';
     const newsModalDiv = document.createElement('div');
@@ -143,21 +143,23 @@ const newsDetailsModal = newsDetails => {
 
 }
 
-
-
-
 // defult news section 
-const defultNews = () => {
+const defaultNews = () => {
     const url = `https://openapi.programming-hero.com/api/news/category/08`;
     // console.log(url)
-    fetch(url)
-        .then(res => res.json())
-        .then(data => defultNewsDisplay(data.data))
+    try {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => defaultNewDisplay(data.data))
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
-defultNews();
+defaultNews();
 
-const defultNewsDisplay = (totalNews) => {
+const defaultNewDisplay = (totalNews) => {
     // console.log(totalNews)
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
@@ -173,20 +175,13 @@ const defultNewsDisplay = (totalNews) => {
         <h2>${allNews} items found for this category </h2>
     `;
     totalNewsContainer.appendChild(totalNewsDiv);
-    const arr = [];
 
     totalNews.sort((a, b) => {
         return b.total_view - a.total_view;
     })
     totalNews.forEach(news => {
         // console.log(news)
-
         const newsDiv = document.createElement('div');
-        const newsView = news.total_view;
-        arr.push(newsView);
-        // console.log(arr)
-
-        console.log(arr)
         // console.log(newsView)
         newsDiv.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl mb-4">
@@ -232,5 +227,5 @@ const toggleSpinner = isLoading => {
 
 categoriesMenu();
 
-// defultNewsDisplay();
+// defaultNewDisplay();
 
